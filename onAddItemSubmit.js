@@ -46,7 +46,7 @@ function createIcon(classes){
     return icon;
 }
 
-function clearItem(e){
+function removeItem(e){
     if(e.target.parentElement.classList.contains('remove-item')){
         e.target.parentElement.parentElement.remove();
     }
@@ -109,6 +109,6 @@ formItem.addEventListener('submit', onAddItemSubmit);
 document.addEventListener('DOMContentLoaded', displayItems);
 clearBtn.addEventListener('click', clearItems);
 filterItems.addEventListener('input', filterItem)
-listItem.addEventListener('click', clearItem);
+listItem.addEventListener('click', removeItem);
 
 checkUI();
