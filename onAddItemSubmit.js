@@ -1,6 +1,7 @@
 let formItem = document.getElementById('form-item');
 let inputField = document.getElementById('input-field');
 let listItem = document.getElementById('list-item');
+let clearBtn = document.getElementById('clear');
 
 
 function displayItems(){
@@ -44,7 +45,13 @@ function getItemsFromStorage(){
     return itemsFromStorage;
 }
 
+function clearItems() {
+    while(listItem.firstChild){
+        listItem.firstChild.remove(listItem.firstChild);
+    }
+}
 
 
 formItem.addEventListener('submit', onAddItemSubmit);
 document.addEventListener('DOMContentLoaded', displayItems);
+clearBtn.addEventListener('click', clearItems);
