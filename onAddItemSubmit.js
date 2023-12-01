@@ -25,10 +25,25 @@ function addItemToDOM(item){
     let li = document.createElement('li');
     li.appendChild(document.createTextNode(item))
     listItem.appendChild(li);
-
+    let button = createButton('remove-item text-red');
+    li.appendChild(button);
     inputField.value = '';
     inputField.focus();
     checkUI();
+}
+
+function createButton(classes) {
+    let button = document.createElement('button');
+    button.className = classes;
+    let icon = createIcon('fa-solid fa-xmark');
+    button.appendChild(icon);
+    return button;
+}
+
+function createIcon(classes){
+    let icon = document.createElement('i');
+    icon.className = classes;
+    return icon;
 }
 
 function addItemToStorage(item) {
