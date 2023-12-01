@@ -46,9 +46,24 @@ function createIcon(classes){
     return icon;
 }
 
-function removeItem(e){
-    if(e.target.parentElement.classList.contains('remove-item')){
-        e.target.parentElement.parentElement.remove();
+function removeItem(item){
+    if(confirm("Are You Sure?")){
+
+        item.remove();
+        removeItemFromStorage(item.textContent);
+
+        checkUI()
+    }
+}
+function removeItemFromStorage(item){
+    let itemsFromStorage = getItemsFromStorage();
+    itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+
+    localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+}
+function onClickItem(e) {
+    if(e.target.parentElement.classList.contains('remove-item')) {
+        removeItem(e.target.parentElement.parentElement);
     }
 }
 
@@ -56,6 +71,8 @@ function clearItems() {
     while(listItem.firstChild){
         listItem.firstChild.remove(listItem.firstChild);
     }
+
+    localStorage.removeItem('items');
     checkUI();
 }
 
@@ -109,6 +126,6 @@ formItem.addEventListener('submit', onAddItemSubmit);
 document.addEventListener('DOMContentLoaded', displayItems);
 clearBtn.addEventListener('click', clearItems);
 filterItems.addEventListener('input', filterItem)
-listItem.addEventListener('click', removeItem);
+listItem.addEventListener('click', onClickItem);
 
 checkUI();
