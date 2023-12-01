@@ -2,6 +2,11 @@ let formItem = document.getElementById('form-item');
 let inputField = document.getElementById('input-field');
 let listItem = document.getElementById('list-item');
 
+
+function displayItems(){
+    const itemsFromStorage = getItemsFromStorage();
+    itemsFromStorage.forEach(item => addItemToDOM(item));
+}
 function onAddItemSubmit(e){
     e.preventDefault();
     let newItem = inputField.value;
@@ -42,3 +47,4 @@ function getItemsFromStorage(){
 
 
 formItem.addEventListener('submit', onAddItemSubmit);
+document.addEventListener('DOMContentLoaded', displayItems);
