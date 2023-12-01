@@ -2,6 +2,7 @@ let formItem = document.getElementById('form-item');
 let inputField = document.getElementById('input-field');
 let listItem = document.getElementById('list-item');
 let clearBtn = document.getElementById('clear');
+let filterItems = document.getElementById('filter');
 
 
 function displayItems(){
@@ -27,12 +28,14 @@ function addItemToDOM(item){
 
     inputField.value = '';
     inputField.focus();
+    checkUI();
 }
 
 function addItemToStorage(item) {
     const itemsFromStorage = getItemsFromStorage();
     itemsFromStorage.push(item);
     localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+
 }
 
 function getItemsFromStorage(){
@@ -49,9 +52,40 @@ function clearItems() {
     while(listItem.firstChild){
         listItem.firstChild.remove(listItem.firstChild);
     }
+    checkUI();
 }
+
+function filterItem(e) {
+    let items = listItem.querySelectorAll('li');
+    let text = e.target.value.toLowerCase();
+
+    items.forEach((items) =>{
+        let itemName = items.firstChild.textContent.toLowerCase();
+        if(itemName.indexOf(text)!= -1){
+            items.style.display = 'flex';
+        }else{
+            items.style.display = 'none';
+        }
+    })
+    checkUI();
+}
+
+function checkUI(){
+    let item = listItem.querySelectorAll('li');
+    if(item.length === 0){
+        clearBtn.style.display = 'none';
+        filterItems.style.display = 'none';
+    }else{
+        clearBtn.style.display = 'block';
+        filterItems.style.display = 'block';
+    }
+}
+
 
 
 formItem.addEventListener('submit', onAddItemSubmit);
 document.addEventListener('DOMContentLoaded', displayItems);
 clearBtn.addEventListener('click', clearItems);
+filterItems.addEventListener('input', filterItem)
+
+checkUI();
