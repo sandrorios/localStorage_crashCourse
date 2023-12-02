@@ -77,13 +77,14 @@ function clearItems() {
     checkUI();
 }
 
+// Dry 
 function addItemToStorage(item) {
     const itemsFromStorage = getItemsFromStorage();
     itemsFromStorage.push(item);
     localStorage.setItem('items', JSON.stringify(itemsFromStorage));
 
 }
-
+// code from addItemToStorage function
 function getItemsFromStorage(){
     let itemsFromStorage;
     if(localStorage.getItem('items') === null){
@@ -98,7 +99,7 @@ function getItemsFromStorage(){
 function filterItem(e) {
     let items = listItem.querySelectorAll('li');
     let text = e.target.value.toLowerCase();
-    
+
     items.forEach((items) =>{
         let itemName = items.firstChild.textContent.toLowerCase();
         if(itemName.indexOf(text)!= -1){
@@ -124,7 +125,7 @@ function checkUI(){
 
 
 formItem.addEventListener('submit', onAddItemSubmit);
-document.addEventListener('DOMContentLoaded', displayItems);
+document.addEventListener('DOMContentLoaded', displayItems); // to display items on the page
 clearBtn.addEventListener('click', clearItems);
 filterItems.addEventListener('input', filterItem)
 listItem.addEventListener('click', onClickItem);
