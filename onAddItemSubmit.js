@@ -29,6 +29,7 @@ function addItemToDOM(item){
     li.appendChild(button);
     inputField.value = '';
     inputField.focus();
+
     checkUI();
 }
 
@@ -97,7 +98,7 @@ function getItemsFromStorage(){
 function filterItem(e) {
     let items = listItem.querySelectorAll('li');
     let text = e.target.value.toLowerCase();
-
+    
     items.forEach((items) =>{
         let itemName = items.firstChild.textContent.toLowerCase();
         if(itemName.indexOf(text)!= -1){
