@@ -1,40 +1,12 @@
+function onAddItemSubmit(e){
 
-function addItemToStorage(item){
-    let itemsFromStorage;
-    if(localStorage.getItem('items') === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem('items'))
-    }
-        itemsFromStorage.push(item);
-        localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+    addItemToDOM(newItem);
+    addItemToStorage(newItem);
 }
 
-function addItemToStorage(item){
+function addItemToDOM(item){
     let itemsFromStorage;
-    if(localStorage.getItem('items') === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem('items'));
-    }
-    itemsFromStorage.push(item);
-    localStorage.setItem('items', JSON.stringify(itemsFromStorage))
-}
-
-function addItemToStorage(item) {
-    let itemsFromStorage;
-    if(localStorage.getItem('items') === null){
-        itemsFromStorage = [];
-    }else{
-        itemsFromStorage = JSON.parse(localStorage.getItem('items'));
-    }
-    itemsFromStorage.push(item);
-    localStorage.setItem('items', JSON.stringify(itemsFromStorage));
-}
-
-function addItemToStorage(item){
-    let itemsFromStorage;
-    if(localStorage.getItem('items') === null){
+    if(localStorage.getItem('items') == null){
         itemsFromStorage = [];
     }else{
         itemsFromStorage = JSON.parse(localStorage.getItem('items'));
