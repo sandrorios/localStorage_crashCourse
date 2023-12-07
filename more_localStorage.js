@@ -19,3 +19,27 @@ localStorage.setItem("testJSON", myJSON);
 let text = localStorage.getItem("testJSON");
 let obj = JSON.parse(text);
 document.getElementById('demo').innerHTML = obj.name;
+
+
+// Store data in localStorage
+localStorage.setItem("key", "value");
+
+// Retrieve data from localStorage
+console.log(data);
+
+//Update data in localStorage
+localStorage.setItem("key", "new value");
+
+//Retrieve updated data from localStorage;
+var updatedData = localStorage.getItem("key");
+console.log(updatedData);
+
+//Remove data from localStorage
+localStorage.removeItem("key");
+
+//Check if data has been removed
+var removedData = localStorage.getItem("key");
+console.log(removedData);
+
+//Clear all data from localStorage
+localStorage.clear();
